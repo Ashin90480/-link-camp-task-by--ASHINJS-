@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LINK CAMP 2025</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --olive: #658D1B;
+    --bg-dark: #0c1006;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: var(--bg-dark);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ===== BACKGROUND ANIMATION ===== */
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg-dark);
+}
+
+.background .circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.25;
+    animation-name: float;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes float {
+    0%   { transform: translateY(100vh) translateX(0) rotate(0deg); }
+    50%  { transform: translateY(50vh) translateX(20px) rotate(180deg); }
+    100% { transform: translateY(-10vh) translateX(-20px) rotate(360deg); }
+}
+
+/* ===== HERO ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.hero .logo img {
+    width: 470px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.card {
+    max-width: 850px;
+    width: 100%;
+    padding: 60px 40px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(101,141,27,0.4);
+}
+
+h1 {
+    font-size: 48px;
+    margin: 20px 0 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #cbdc8b;
+    margin-bottom: 30px;
+}
+
+.link-card {
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+  padding: 40px 30px 30px;
+  background: #0e1f17;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 255, 150, 0.2);
+}
+
+.info {
+    display: inline-flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 30px;
+    border: 1px solid var(--olive);
+    margin-bottom: 30px;
+}
+
+.button {
+    padding: 14px 36px;
+    background: var(--olive);
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* ===== TIMELINE ===== */
+.timeline-section {
+    max-width: 900px;
+    margin: 120px auto;
+    padding: 0 20px;
+}
+
+.timeline-section h2 {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.timeline-wrapper {
+    position: relative;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 9px;
+    top: 0;
+    width: 4px;
+    height: 0;
+    background: var(--olive);
+    transition: height 1.2s ease;
+}
+
+.timeline-wrapper.animate .timeline-line {
+    height: 100%;
+}
+
+.timeline {
+    padding-left: 40px;
+}
+
+.timeline-item {
+    opacity: 0;
+    transform: translateY(-30px);
+    margin-bottom: 45px;
+    position: relative;
+    transition: all 0.6s ease;
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -40px;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    background: var(--olive);
+    border-radius: 50%;
+}
+
+.timeline-item h3 {
+    font-size: 20px;
+    color: #cbdc8b;
+    margin-bottom: 6px;
+}
+
+.timeline-item p {
+    font-size: 16px;
+    color: #e6e6e6;
+}
+
+/* ===== EVENT HIGHLIGHTS ===== */
+.highlights-section {
+    max-width: 1000px;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.highlights-section h2 {
+    font-size: 38px;
+    margin-bottom: 30px;
+}
+
+.highlight-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.highlight-track {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+}
+
+.highlight-track img {
+    flex-shrink: 0;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ===== ABOUT ===== */
+.about-section {
+    max-width: 1100px;
+    margin: 100px auto;
+    padding: 0 20px;
+}
+
+.about-section h2 {
+    font-size: 40px;
+}
+
+.subtitle.large {
+    font-size: 22px;
+    color: #cbdc8b;
+    margin: 20px 0;
+}
+
+.about-section p {
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #e6e6e6;
+}
+
+/* ===== CONTACT ===== */
+.contact-section {
+    background: rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(101,141,27,0.4);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.contact-section p {
+    margin-bottom: 10px;
+}
+
+.contact-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.contact-links a {
+    padding: 12px 22px;
+    border-radius: 30px;
+    border: 1px solid var(--olive);
+    color: white;
+    text-decoration: none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    h1 { font-size: 34px; }
+    .timeline-section h2,
+    .highlights-section h2,
+    .about-section h2,
+    .contact-section h2 { font-size: 30px; }
+    .hero .logo img { width: 280px; }
+    .card { padding: 40px 20px; }
+    .info { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND EFFECT -->
+<div class="background" id="bg"></div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="card">
+        <div class="logo">
+            <img src="LINK_white.png" alt="IEEE LINK Logo">
+        </div>
+
+        <h1>LINK CAMP 2025</h1>
+        <div class="subtitle">Unite • Learn • Connect</div>
+
+        <div class="info">
+            <div>📍 Kochi</div>
+            <div>📅 24th January 2026</div>
+        </div>
+
+        <a href="ieee-link.org/Link_Camp_2026" class="button" target="_blank">Register Now</a>
+    </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+    <h2>⌛ Timeline | LINK CAMP 2025</h2>
+    <div class="timeline-wrapper" id="timelineWrapper">
+        <div class="timeline-line"></div>
+        <div class="timeline">
+            <div class="timeline-item"><h3>Applications Open</h3><p>30th December 2025</p></div>
+            <div class="timeline-item"><h3>Application Period</h3><p>31st Dec – 07th Jan</p></div>
+            <div class="timeline-item"><h3>Applications Close</h3><p>07th January 2026</p></div>
+            <div class="timeline-item"><h3>Evaluations</h3><p>12th – 19th January</p></div>
+            <div class="timeline-item"><h3>LINK CAMP 2025</h3><p>24th January • Kochi</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- EVENT HIGHLIGHTS -->
+<section class="highlights-section">
+    <h2> Highlights 2024</h2>
+    <div class="highlight-slider">
+        <div class="highlight-track" id="highlightTrack">
+            <img src="IMG_5394.jpg" alt="">
+            <img src="7c1c6b81-ea1f-4142-a426-534b2b2f4add.JPG" alt="">
+            <img src="574f1c22-edf7-41d9-83b5-a677732059a1.JPG" alt="">
+            <img src="5B6C9EC5-22CC-4ACA-B3A1-994F297389D7.JPG" alt="">
+            <img src="ccda6536-90a7-45b0-9cc5-108fc1fd8226.JPG" alt="">
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section">
+    <h1>ABOUT US</h1>
+    <div></div>
+    <h3>Who Are We?</h3>
+    <p>
+        LINK (Local Integrated Network of Kerala IEEE Students) is an innovative concept that originated in IEEE Kerala Section in India, aimed at networking student branches in an effective way, thereby increasing the value in IEEE Student membership. LINK was formally inaugurated by past IEEE President Mr. Cleon Anderson in January 2005. Since its inception LINK has achieved tremendous results, causing an exponential increase in student branches and student activities in IEEE Kerala Section over the years. The model of link was adopted by IEEE Region 10 as R10 GINI (Global Integrated Network of IEEE Students).
+    </p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+    <h2>Contact & Links</h2>
+    <p><strong>Yohann Chandy</strong> – 📞 9188001211</p>
+    <p><strong>Anna Elsa Jose</strong> – 📞 9495403820</p>
+    <div class="contact-links">
+        <a href="https://www.ieee.org" target="_blank">IEEE</a>
+        <a href="https://ieeekerala.org" target="_blank">IEEE Kerala Section</a>
+        <a href="https://ieee-link.org" target="_blank">IEEE LINK</a>
+        <a href="https://instagram.com/ieeelink" target="_blank">Instagram</a>
+        <a href="https://linkedin.com/company/ieeelink" target="_blank">LinkedIn</a>
+    </div>
+</section>
+
+<script>
+/* TIMELINE ANIMATION */
+const wrapper = document.getElementById("timelineWrapper");
+const items = document.querySelectorAll(".timeline-item");
+const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) {
+        wrapper.classList.add("animate");
+        items.forEach((item, i) => setTimeout(() => item.classList.add("show"), i * 500));
+        observer.disconnect();
+    }
+}, { threshold: 0.3 });
+observer.observe(wrapper);
+
+/* EVENT HIGHLIGHTS SLIDER */
+const highlightTrack = document.getElementById("highlightTrack");
+const highlightImages = highlightTrack.querySelectorAll("img");
+let currentIndex = 0;
+function showImage(index) {
+    highlightImages.forEach((img, i) => {
+        img.style.display = i === index ? "block" : "none";
+    });
+}
+showImage(currentIndex);
+setInterval(() => {
+    currentIndex = (currentIndex + 1) % highlightImages.length;
+    showImage(currentIndex);
+}, 3000);
+
+/* BACKGROUND CIRCLES */
+const bg = document.getElementById("bg");
+for (let i = 0; i < 35; i++) {
+    const c = document.createElement("div");
+    c.className = "circle";
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.top = Math.random() * 100 + "vh";
+    const size = 8 + Math.random() * 25;
+    c.style.width = size + "px";
+    c.style.height = size + "px";
+    c.style.background = `rgba(101,141,27,${0.1 + Math.random() * 0.3})`;
+    c.style.animationDuration = 15 + Math.random() * 20 + "s";
+    bg.appendChild(c);
+}
+</script>
+
+</body>
+</html>
